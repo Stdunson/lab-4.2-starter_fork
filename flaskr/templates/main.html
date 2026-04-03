@@ -10,8 +10,13 @@
 
 <body>
     <!-- The below tag is using Bulma CSS. Try replacing line 14 with line 13. -->
-    <!-- <div class="has-text-success-dark is-size-4  has-text-weight-medium"> -->
-    <div>
+    <div class="has-text-success-dark is-size-4  has-text-weight-medium">
+        {% if request.endpoint != 'home' %}
+        <a class="back-btn" href="{% if page_name != 'Wiki Index' %}{{ url_for('all_pages') }}{% else %}{{ url_for('home') }}{% endif %}">
+            Back
+        </a>
+        &nbsp;&nbsp;
+        {% endif %}
         <a href="{{ url_for('home') }}">
             Home
         </a>
@@ -26,9 +31,10 @@
     </div>
 
     <!-- The below tag is using Bulma CSS. Try replacing line 30 with line 29. -->
-    <!-- <div class="content"> -->
-    <div>
-        {% block content %}{{ page_content }}{% endblock %}
+    <div class="content">
+        <div {% if request.endpoint == 'pages' %}class="wiki-text"{% endif %}>
+            {% block content %}{{ page_content }}{% endblock %}
+        </div>
     </div>
 
 </body>
