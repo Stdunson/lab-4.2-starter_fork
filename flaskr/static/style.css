@@ -19,3 +19,13 @@ p {
     margin-left: 15px;
     background-color: lightblue;
 }
+
+a:not(.back-btn) {
+    text-decoration: underline;
+    color: blue;
+}
+
+.wiki-text {
+    margin-top: 50px;
+    white-space: pre-wrap;
+}
